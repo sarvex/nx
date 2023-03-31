@@ -84,5 +84,6 @@
       "type": "boolean",
       "default": false
     }
-  }
+  },
+  "required": ["preset", "name"]
 }
