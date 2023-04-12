@@ -97,7 +97,6 @@ export async function pluginGenerator(host: Tree, schema: Schema) {
       ...schema,
       config: 'project',
       bundler: options.bundler,
-      buildable: true,
       publishable: true,
       importPath: options.npmPackageName,
       skipFormat: true,
