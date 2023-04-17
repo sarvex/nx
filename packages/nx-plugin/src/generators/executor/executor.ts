@@ -9,6 +9,7 @@ import {
   writeJson,
   readJson,
   ExecutorsJson,
+  formatFiles,
 } from '@nx/devkit';
 import type { Tree } from '@nx/devkit';
 import type { Schema } from './schema';
@@ -156,6 +157,10 @@ export async function executorGenerator(host: Tree, schema: Schema) {
   addFiles(host, options);
   if (options.includeHasher) {
     addHasherFiles(host, options);
+  }
+
+  if (!schema.skipFormat) {
+    await formatFiles(host);
   }
 
   updateExecutorJson(host, options);

@@ -45,12 +45,14 @@ async function addFiles(host: Tree, options: NormalizedSchema) {
     project: options.name,
     name: options.name,
     unitTestRunner: options.unitTestRunner,
+    skipFormat: true,
   });
   await executorGenerator(host, {
     project: options.name,
     name: 'build',
     unitTestRunner: options.unitTestRunner,
     includeHasher: false,
+    skipFormat: true,
   });
 }
 

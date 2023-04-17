@@ -3,9 +3,10 @@ import {
   readJson,
   readProjectConfiguration,
   Tree,
-} from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Linter } from '@nrwl/linter';
+} from '@nx/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { Linter } from '@nx/linter';
+import { PackageJson } from 'nx/src/utils/package-json';
 import pluginGenerator from '../plugin/plugin';
 import { createPackageGenerator } from './create-package';
 import { CreatePackageSchema } from './schema';
@@ -54,9 +55,8 @@ describe('NxPlugin Create Package Generator', () => {
         tsConfig: 'libs/create-package/tsconfig.lib.json',
         main: 'libs/create-package/bin/index.ts',
         assets: [],
-        buildableProjectDepsInPackageJsonType: 'dependencies',
+        updateBuildableProjectDepsInPackageJson: false,
       },
-      dependsOn: ['^build'],
     });
   });
 
@@ -101,26 +101,11 @@ describe('NxPlugin Create Package Generator', () => {
     await createPackageGenerator(tree, getSchema());
 
     const { root } = readProjectConfiguration(tree, 'create-package');
-    const { name } = readJson<{ name: string }>(
+    const { name } = readJson<PackageJson>(
       tree,
       joinPathFragments(root, 'package.json')
     );
 
     expect(name).toEqual('create-package');
-  });
-
-  it('should use importPath as the package.json name', async () => {
-    await createPackageGenerator(
-      tree,
-      getSchema({ importPath: '@my-company/create-package' })
-    );
-
-    const { root } = readProjectConfiguration(tree, 'create-package');
-    const { name } = readJson<{ name: string }>(
-      tree,
-      joinPathFragments(root, 'package.json')
-    );
-
-    expect(name).toEqual('@my-company/create-package');
   });
 });

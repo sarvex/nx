@@ -7,6 +7,7 @@ import {
   readJson,
   readProjectConfiguration,
   updateJson,
+  formatFiles,
 } from '@nx/devkit';
 import { PackageJson } from 'nx/src/utils/package-json';
 import * as path from 'path';
@@ -139,6 +140,10 @@ export async function generatorGenerator(host: Tree, schema: Schema) {
   const options = normalizeOptions(host, schema);
 
   addFiles(host, options);
+
+  if (!schema.skipFormat) {
+    await formatFiles(host);
+  }
 
   updateGeneratorJson(host, options);
 }

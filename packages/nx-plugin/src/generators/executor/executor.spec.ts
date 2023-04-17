@@ -23,6 +23,7 @@ describe('NxPlugin Executor Generator', () => {
       name: 'my-executor',
       unitTestRunner: 'jest',
       includeHasher: false,
+      skipFormat: true,
     });
 
     expect(
@@ -46,6 +47,7 @@ describe('NxPlugin Executor Generator', () => {
       description: 'my-executor description',
       unitTestRunner: 'jest',
       includeHasher: false,
+      skipFormat: true,
     });
 
     const executorJson = readJson(tree, 'libs/my-plugin/executors.json');
@@ -67,6 +69,7 @@ describe('NxPlugin Executor Generator', () => {
       name: 'my-executor',
       unitTestRunner: 'jest',
       includeHasher: false,
+      skipFormat: true,
     });
 
     const executorsJson = readJson(tree, 'libs/my-plugin/executors.json');
@@ -83,6 +86,7 @@ describe('NxPlugin Executor Generator', () => {
       description: 'my-executor custom description',
       unitTestRunner: 'jest',
       includeHasher: false,
+      skipFormat: true,
     });
 
     const executorsJson = readJson(tree, 'libs/my-plugin/executors.json');
@@ -103,6 +107,7 @@ describe('NxPlugin Executor Generator', () => {
       includeHasher: false,
       name: 'test-executor',
       unitTestRunner: 'jest',
+      skipFormat: true,
     });
 
     expect(() => tree.exists(`${libConfig.root}/executors.json`)).not.toThrow();
@@ -120,6 +125,7 @@ describe('NxPlugin Executor Generator', () => {
           description: 'my-executor description',
           unitTestRunner: 'none',
           includeHasher: true,
+          skipFormat: true,
         });
 
         expect(
@@ -141,6 +147,7 @@ describe('NxPlugin Executor Generator', () => {
         name: 'my-executor',
         includeHasher: true,
         unitTestRunner: 'jest',
+        skipFormat: true,
       });
       expect(
         tree.exists('libs/my-plugin/src/executors/my-executor/hasher.spec.ts')
@@ -172,6 +179,7 @@ describe('NxPlugin Executor Generator', () => {
         name: 'my-executor',
         includeHasher: true,
         unitTestRunner: 'jest',
+        skipFormat: true,
       });
 
       const executorsJson = readJson(tree, 'libs/my-plugin/executors.json');

@@ -134,11 +134,12 @@ describe('updateCliPropsForPlugins', () => {
   it('should remove cli property from executors', async () => {
     const tree = createTreeWithEmptyWorkspace();
     const { root, name } = await createPlugin(tree);
-    executorGenerator(tree, {
+    await executorGenerator(tree, {
       name: 'my-executor',
       project: name,
       unitTestRunner: 'jest',
       includeHasher: false,
+      skipFormat: true,
     });
     const schemaPath = joinPathFragments(
       root,
@@ -156,11 +157,12 @@ describe('updateCliPropsForPlugins', () => {
   it('should remove cli property from builders', async () => {
     const tree = createTreeWithEmptyWorkspace();
     const { root, name } = await createPlugin(tree);
-    executorGenerator(tree, {
+    await executorGenerator(tree, {
       name: 'my-executor',
       project: name,
       unitTestRunner: 'jest',
       includeHasher: false,
+      skipFormat: true,
     });
     updateJson<ExecutorsJson>(
       tree,
@@ -187,7 +189,7 @@ describe('updateCliPropsForPlugins', () => {
   it('should remove cli property from generators', async () => {
     const tree = createTreeWithEmptyWorkspace();
     const { root, name } = await createPlugin(tree);
-    generatorGenerator(tree, {
+    await generatorGenerator(tree, {
       name: 'my-generator',
       project: name,
       unitTestRunner: 'jest',
@@ -208,7 +210,7 @@ describe('updateCliPropsForPlugins', () => {
   it('should remove cli property from schematics', async () => {
     const tree = createTreeWithEmptyWorkspace();
     const { root, name } = await createPlugin(tree);
-    generatorGenerator(tree, {
+    await generatorGenerator(tree, {
       name: 'my-schematic',
       project: name,
       unitTestRunner: 'jest',

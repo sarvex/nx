@@ -8,6 +8,8 @@ async function main() {
     throw new Error('Please provide a name for the workspace');
   }
 
+  console.log(`Creating the workspace: ${name}`);
+
   // TODO: update below to customize the workspace
   await createWorkspace('<%= preset %>', {
     name, 

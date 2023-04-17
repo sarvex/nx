@@ -7,6 +7,7 @@ import {
 } from '@nx/devkit';
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { Linter } from '@nx/linter';
+import { PackageJson } from 'nx/src/utils/package-json';
 import { pluginGenerator } from './plugin';
 import { Schema } from './schema';
 
@@ -211,7 +212,7 @@ describe('NxPlugin Plugin Generator', () => {
       await pluginGenerator(tree, getSchema());
 
       const { root } = readProjectConfiguration(tree, 'my-plugin');
-      const { name } = readJson<{ name: string }>(
+      const { name } = readJson<PackageJson>(
         tree,
         joinPathFragments(root, 'package.json')
       );
@@ -228,7 +229,7 @@ describe('NxPlugin Plugin Generator', () => {
       await pluginGenerator(tree, getSchema());
 
       const { root } = readProjectConfiguration(tree, 'my-plugin');
-      const { name } = readJson<{ name: string }>(
+      const { name } = readJson<PackageJson>(
         tree,
         joinPathFragments(root, 'package.json')
       );
@@ -243,7 +244,7 @@ describe('NxPlugin Plugin Generator', () => {
       );
 
       const { root } = readProjectConfiguration(tree, 'my-plugin');
-      const { name } = readJson<{ name: string }>(
+      const { name } = readJson<PackageJson>(
         tree,
         joinPathFragments(root, 'package.json')
       );

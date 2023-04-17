@@ -26,6 +26,7 @@ describe('NxPlugin Generator Generator', () => {
       project: projectName,
       name: 'my-generator',
       unitTestRunner: 'jest',
+      skipFormat: true,
     });
 
     expect(
@@ -50,6 +51,7 @@ describe('NxPlugin Generator Generator', () => {
       name: 'my-generator',
       description: 'my-generator description',
       unitTestRunner: 'jest',
+      skipFormat: true,
     });
 
     const generatorJson = readJson(tree, 'libs/my-plugin/generators.json');
@@ -74,6 +76,7 @@ describe('NxPlugin Generator Generator', () => {
       name: generatorName,
       description: 'my-generator description',
       unitTestRunner: 'jest',
+      skipFormat: true,
     });
 
     const generatorJson = readJson(tree, 'libs/my-plugin/generators.json');
@@ -105,6 +108,7 @@ describe('NxPlugin Generator Generator', () => {
       project: 'test-js-lib',
       name: 'test-generator',
       unitTestRunner: 'jest',
+      skipFormat: true,
     });
 
     expect(() =>
@@ -120,6 +124,7 @@ describe('NxPlugin Generator Generator', () => {
       project: projectName,
       name: 'my-generator',
       unitTestRunner: 'jest',
+      skipFormat: true,
     });
 
     const generatorJson = readJson(tree, 'libs/my-plugin/generators.json');
@@ -135,6 +140,7 @@ describe('NxPlugin Generator Generator', () => {
       name: 'my-generator',
       description: 'my-generator custom description',
       unitTestRunner: 'jest',
+      skipFormat: true,
     });
 
     const generatorJson = readJson(tree, 'libs/my-plugin/generators.json');
@@ -152,6 +158,7 @@ describe('NxPlugin Generator Generator', () => {
           name: 'my-generator',
           description: 'my-generator custom description',
           unitTestRunner: 'none',
+          skipFormat: true,
         });
 
         expect(
@@ -172,6 +179,7 @@ describe('NxPlugin Generator Generator', () => {
         project: projectName,
         name: 'preset',
         unitTestRunner: 'none',
+        skipFormat: true,
       });
 
       const generatorJson = readJson<GeneratorsJson>(

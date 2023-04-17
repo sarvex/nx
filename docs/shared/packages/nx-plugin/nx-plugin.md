@@ -117,7 +117,7 @@ it('should create my-plugin', async (done) => {
 - The `ensureNxProject` is the function that will create the temporary directory. It takes two arguments, the plugin package name and the dist directory of when it's built.
 - The `runNxCommandAsync` will execute a `nx` command in the E2E directory.
 
-There are additional functions that the `@nrwl/nx-plugin/testing` package exports. Most of them are file utilities to manipulate and read files in the E2E directory.
+There are additional functions that the `@nx/nx-plugin/testing` package exports. Most of them are file utilities to manipulate and read files in the E2E directory.
 
 ## Including Assets
 
